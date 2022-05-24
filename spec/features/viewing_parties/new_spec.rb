@@ -14,7 +14,7 @@ describe 'create a new viewing party' do
     fill_in :password, with: @user.password
     click_button 'Login'
 
-    visit user_movie_path(@user, @movie_id)
+    visit "/dashboard/movies/#{@movie_id}"
 
     click_on 'Create Viewing Party'
   end
