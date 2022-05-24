@@ -18,7 +18,7 @@ describe 'Creating a user' do
       click_button 'Register'
 
       user = User.last
-      expect(current_path).to eq(user_path(user))
+      expect(current_path).to eq('/dashboard')
     end
   end
 

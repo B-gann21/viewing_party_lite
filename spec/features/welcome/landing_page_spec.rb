@@ -9,6 +9,12 @@ RSpec.describe 'The landing page' do
     @sammy = User.create!(name: 'Sammy Jones', email: 'sammy.jones@gmail.com', password: 'sammy', password_confirmation: 'sammy')
 
     visit '/'
+    click_on 'Login'
+    fill_in :email, with: @fred.email
+    fill_in :password, with: @fred.password
+    click_button 'Login'
+
+    visit '/'
   end
 
   it 'has the name of the app' do
@@ -26,16 +32,6 @@ RSpec.describe 'The landing page' do
     expect(page).to have_content('Billy Jones: billy.jones@gmail.com')
     expect(page).to have_content('Sammy Jones: sammy.jones@gmail.com')
     expect(page).to have_content('Fred Jonson: fred.jonson@gmail.com')
-  end
-
-  it 'user names are links to their dashboard' do
-    click_link('Billy Jones')
-    expect(current_path).to eq("/users/#{@billy.id}")
-
-    visit '/'
-
-    click_link('Fred Jonson')
-    expect(current_path).to eq("/users/#{@fred.id}")
   end
 
   it 'has a link to the landing page' do

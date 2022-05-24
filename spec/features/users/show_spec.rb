@@ -19,7 +19,13 @@ describe 'User dashboard' do
     @user2.party_users.create!(viewing_party_id: @vp2.id, host: true)
     @user2.party_users.create!(viewing_party_id: @vp1.id, host: false)
 
-    visit user_path(@user1)
+    visit '/'
+    click_on 'Login'
+    fill_in :email, with: @user1.email
+    fill_in :password, with: @user1.password
+    click_button 'Login'
+
+    visit '/dashboard'
   end
 
   it 'Displays user dashboard attributes on the page' do

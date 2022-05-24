@@ -7,6 +7,12 @@ describe 'Discover Movies' do
     @user1 = User.create!(name: 'John', email: 'john.hennerich@gmail.com', password: 'john', password_confirmation: 'john')
     @user2 = User.create!(name: 'Brylan', email: 'brylan.gannon112@gmail.com', password: 'brylan', password_confirmation: 'brylan')
 
+    visit '/'
+    click_on 'Login'
+    fill_in :email, with: @user1.email
+    fill_in :password, with: @user1.password
+    click_button 'Login'
+
     visit user_discover_index_path(@user1)
   end
 
