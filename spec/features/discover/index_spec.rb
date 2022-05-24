@@ -13,7 +13,7 @@ describe 'Discover Movies' do
     fill_in :password, with: @user1.password
     click_button 'Login'
 
-    visit user_discover_index_path(@user1)
+    visit '/dashboard/discover'
   end
 
   it 'Displays a header' do
@@ -23,13 +23,13 @@ describe 'Discover Movies' do
   it 'displays a top movies button that routes to the discover page' do
     click_button 'Top Rated Movies'
 
-    expect(current_path).to eq("/users/#{@user1.id}/movies")
+    expect(current_path).to eq('/dashboard/movies')
   end
 
   it 'displays a search bar to find movies by keyword' do
     fill_in :query, with: 'Mad'
     click_button 'Search by Title'
 
-    expect(current_path).to eq("/users/#{@user1.id}/movies")
+    expect(current_path).to eq("/dashboard/movies")
   end
 end

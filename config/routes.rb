@@ -8,13 +8,12 @@ Rails.application.routes.draw do
   get '/login', to: 'users#login_form'
   post '/login', to: 'users#login_auth'
 
-  get '/dashboard', to: 'users#show'
-  post '/dashboard', to: 'viewing_parties#create'
+  post '/users', to: 'users#create'
 
-  resources :users, only: %i[create] do
-    resources :movies, only: %i[index show] do
-      resources :viewing_parties, only: [:new]
-    end
-    resources :discover, only: [:index]
-  end
+  get '/dashboard', to: 'users#show'
+  get '/dashboard/discover', to: 'discover#index'
+  get '/dashboard/movies', to: 'movies#index'
+  get '/dashboard/movies/:id', to: 'movies#show'
+  get '/dashboard/movies/:id/new', to: 'viewing_parties#new'
+  post '/dashboard', to: 'viewing_parties#create'
 end
