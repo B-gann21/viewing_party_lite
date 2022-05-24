@@ -6,13 +6,20 @@ describe 'The movie details page' do
   before do
     @user = User.create!(name: 'Brylan', email: 'brylan.gannon112@gmail.com', password: 'brylan', password_confirmation: 'brylan')
     @movie_id = 550
-    visit user_movie_path(@user, @movie_id)
+
+    visit '/'
+    click_on 'Login'
+    fill_in :email, with: @user.email
+    fill_in :password, with: @user.password
+    click_button 'Login'
+
+    visit "/dashboard/movies/#{@movie_id}"
   end
 
   it 'displays a link to create a new viewing party' do
     click_on 'Create Viewing Party'
 
-    expect(current_path).to eq(new_user_movie_viewing_party_path(@user, @movie_id))
+    expect(current_path).to eq("/dashboard/movies/#{@movie_id}/new")
   end
 
   it 'displays movie details for movie' do

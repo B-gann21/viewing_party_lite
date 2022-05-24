@@ -4,7 +4,7 @@ class ViewingPartiesController < ApplicationController
   before_action :all_users, only: [:new]
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find(session[:user_id])
   end
 
   def create
