@@ -69,6 +69,7 @@ describe 'create a new viewing party' do
       click_on 'Create Viewing Party'
 
       visit '/'
+      click_on 'Logout'
       click_on 'Login'
       fill_in :email, with: @user2.email
       fill_in :password, with: @user2.password

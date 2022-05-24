@@ -22,6 +22,7 @@ RSpec.describe 'The landing page' do
   end
 
   it 'has a link to register a new user' do
+    click_button 'Logout'
     click_button 'New User'
 
     expect(current_path).to eq('/register')

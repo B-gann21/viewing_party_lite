@@ -20,10 +20,10 @@ RSpec.describe 'Logging out as a registered user' do
     end
 
     it 'has a logout button' do
-      click_link 'Logout'
+      click_button 'Logout'
 
       expect(current_path).to eq('/')
-      expect(page).to have_button('New user')
+      expect(page).to have_button('New User')
       expect(page).to have_button('Login')
     end
   end
